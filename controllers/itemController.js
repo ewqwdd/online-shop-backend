@@ -95,6 +95,18 @@ class itemController{
                 let saved = await Basket.findOneAndUpdate({_id:elem._id}, {$set: {items: updatedItems}}, {new: true})
             })
 
+            let imagesToDelete = [...item.img]
+            imagesToDelete.forEach((elem)=>{
+                if(!elem.includes(baseUrl)){
+                    return
+                }
+                const remainingPath = elem.split(baseUrl)[1];
+                console.log(path.join(config.publicPath, remainingPath))
+                fs.unlink(path.join(config.publicPath, remainingPath), (err)=>{
+                    console.log(err)
+                })
+            })
+
             return res.json(item)
         }
         catch(error){
