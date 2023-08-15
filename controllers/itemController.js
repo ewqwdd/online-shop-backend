@@ -11,7 +11,7 @@ const baseUrl = config.baseUrl
 
 class itemController{
     async postItem(req, res){
-        //try{
+        try{
             let files = req.files
 
             if(files && files.files){
@@ -62,10 +62,10 @@ class itemController{
           });
         const saved = await newItem.save()
         return res.json(saved)
-        //}
-        //catch(err){
+        }
+        catch(err){
             return res.status(500).json(err)
-        //}
+        }
     }
 
     async getItem(req, res){
