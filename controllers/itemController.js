@@ -6,7 +6,7 @@ const fs = require('fs');
 const Basket = require('../models/basketModel.js');
 
 
-const baseUrl = "http://localhost:5000/";
+const baseUrl = config.baseUrl
 
 
 class itemController{
